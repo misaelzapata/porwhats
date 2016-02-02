@@ -2,7 +2,7 @@ python_whats:
   build: ./python_whats/
   
 web:
-  image: python_whats	
+  image: python_whats
   restart: always
   build: ./web
   expose:
@@ -12,8 +12,8 @@ web:
 	- mongo
   volumes:
     - /home/dkr/porwhats/web/static/:/app/static
-    - /home/dkr//porwhats/configurations/app/app.ini:/etc/supervisor/app.ini	
-    - /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini		
+    - /home/dkr/porwhats/configurations/app/app.ini:/etc/supervisor/app.ini	
+    - /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini
     - /home/dkr/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
   env_file: .env
   entrypoint: /home/dkr/porwhats/web/docker-entrypoint.sh
