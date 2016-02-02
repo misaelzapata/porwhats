@@ -10,7 +10,7 @@ web:
     - redis
     - mongo
   volumes:
-    - /home/dkr/porwhats/web:/app/	  
+    - /home/dkr/porwhats/web:/app/
     - /home/dkr/porwhats/logs:/app/logs
     - /home/dkr/porwhats/web/static/:/app/static
     - /home/dkr/porwhats/web/requirements.txt:/app/web/requirements.txt
