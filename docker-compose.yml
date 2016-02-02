@@ -15,7 +15,7 @@ web:
     - /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini
     - /home/dkr/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
   env_file: .env
-  entrypoint: ./web/docker-entrypoint.sh
+  entrypoint: ./docker-entrypoint.sh
 
 nginx:
   restart: always
