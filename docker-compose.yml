@@ -2,7 +2,6 @@ python_whats:
   build: ./python_whats/
   
 web:
-  image: python_whats
   restart: always
   build: ./web
   expose:
