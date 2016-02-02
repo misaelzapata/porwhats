@@ -9,7 +9,7 @@ web:
     - "8888"
   links:
     - redis
-	- mongo
+    - mongo
   volumes:
     - /home/dkr/porwhats/web/static/:/app/static
     - /home/dkr/porwhats/configurations/app/app.ini:/etc/supervisor/app.ini	
