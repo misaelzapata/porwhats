@@ -9,7 +9,6 @@ from config import BaseConfig
 
 app = Flask(__name__)
 app.config.from_object(BaseConfig)
-db = SQLAlchemy(app)
 
 
 from models import *
@@ -22,8 +21,9 @@ def index():
         post = Post(text)
         db.session.add(post)
         db.session.commit()
-    posts = Post.query.order_by(Post.date_posted.desc()).all()
-    return render_template('index.html', posts=posts)
+    return 'fuck yeah'
+    #posts = Post.query.order_by(Post.date_posted.desc()).all()
+    #return render_template('index.html', posts=posts)
 
 
 if __name__ == '__main__':

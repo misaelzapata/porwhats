@@ -3,7 +3,7 @@
 
 import os
 
-
+'''
 class BaseConfig(object):
     SECRET_KEY = os.environ['SECRET_KEY']
     DEBUG = os.environ['DEBUG']
@@ -15,11 +15,11 @@ class BaseConfig(object):
     SQLALCHEMY_DATABASE_URI = 'postgresql://{0}:{1}@{2}:{3}/{4}'.format(
         DB_USER, DB_PASS, DB_SERVICE, DB_PORT, DB_NAME
     )
+'''
 
-
-# class BaseConfig(object):
-#     SECRET_KEY = 'hi'
-#     DEBUG = True
+class BaseConfig(object):
+     SECRET_KEY = 'hi'
+     DEBUG = True
 #     DB_NAME = 'postgres'
 #     DB_SERVICE = 'localhost'
 #     DB_PORT = 5432
