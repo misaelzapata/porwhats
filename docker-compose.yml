@@ -1,0 +1,39 @@
+python_whats:
+  build: ./python_whats/
+  
+web:
+  image: python_whats	
+  restart: always
+  build: ./web
+  expose:
+    - "8888"
+  links:
+    - redis
+	- mongo
+  volumes:
+    - /home/dkr/web/static/:/app/static
+    - /home/dkr/configurations/app/app.ini:/etc/supervisor/app.ini	
+    - /home/dkr/configurations/app/downloader.ini:/etc/supervisor/downloader.ini		
+    - /home/dkr/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
+  env_file: .env
+  entrypoint: ./docker-entrypoint.sh
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  volumes:
+    - /www/static
+  volumes_from:
+    - web
+  links:
+    - web:web
+
+mongo:
+  image: mongo:latest
+
+redis:
+  image: redis:3.0.5
+  ports:
+    - "0.0.0.0:6379:6379"  
