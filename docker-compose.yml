@@ -10,6 +10,7 @@ web:
     - redis
     - mongo
   volumes:
+    - /home/dkr/porwhats/web:/app/	  
     - /home/dkr/porwhats/logs:/app/logs
     - /home/dkr/porwhats/web/static/:/app/static
     - /home/dkr/porwhats/web/requirements.txt:/app/web/requirements.txt
@@ -18,7 +19,6 @@ web:
     - /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini
     - /home/dkr/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
   env_file: .env
-  working_dir: /app/web
   entrypoint: ./docker-entrypoint.sh
 
 nginx:
