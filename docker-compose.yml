@@ -12,6 +12,7 @@ web:
   volumes:
     - /home/dkr/porwhats/logs:/app/logs
     - /home/dkr/porwhats/web/static/:/app/static
+    - /home/dkr/porwhats/web/requirements.txt:/app/web/requirements.txt
     - /home/dkr/porwhats/web/docker-entrypoint.sh:/app/web/docker-entrypoint.sh
     - /home/dkr/porwhats/configurations/app/app.ini:/etc/supervisor/app.ini
     - /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini
