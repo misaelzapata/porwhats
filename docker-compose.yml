@@ -27,7 +27,7 @@ nginx:
   ports:
     - "80:80"
   volumes:
-    - /www/static
+    - /home/dkr/porwhats/web/static/:/www/static
   volumes_from:
     - web
   links:
