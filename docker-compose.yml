@@ -5,7 +5,7 @@ web:
   restart: always
   build: ./web
   expose:
-    - "5000"
+    - "5000:5000"
   links:
     - redis
     - mongo
