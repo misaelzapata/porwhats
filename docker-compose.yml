@@ -11,12 +11,12 @@ web:
     - redis
 	- mongo
   volumes:
-    - /home/dkr/web/static/:/app/static
-    - /home/dkr/configurations/app/app.ini:/etc/supervisor/app.ini	
-    - /home/dkr/configurations/app/downloader.ini:/etc/supervisor/downloader.ini		
-    - /home/dkr/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
+    - /home/dkr/porwhats/web/static/:/app/static
+    - /home/dkr//porwhats/configurations/app/app.ini:/etc/supervisor/app.ini	
+    - /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini		
+    - /home/dkr/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
   env_file: .env
-  entrypoint: ./docker-entrypoint.sh
+  entrypoint: /home/dkr/porwhats/web/docker-entrypoint.sh
 
 nginx:
   restart: always
