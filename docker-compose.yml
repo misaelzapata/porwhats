@@ -5,6 +5,8 @@ web:
   restart: always
   build: ./web
   expose:
+    - "5000"
+  ports:
     - "5000:5000"
   links:
     - redis
