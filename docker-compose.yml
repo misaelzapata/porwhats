@@ -32,7 +32,7 @@ nginx:
     - "80:80"
   volumes:
     - /home/dkr/porwhats/web/static/:/www/static
-    - /home/dkr/porwhats/uploads/:/app/static/uploads	
+    - /home/dkr/porwhats/uploads/:/app/static/uploads
   volumes_from:
     - web
   links:
