@@ -38,6 +38,8 @@ nginx:
 
 mongo:
   image: mongo:latest
+  volumes:  
+    - /home/dkr/data/db:/data/db
 
 redis:
   image: redis:3.0.5
