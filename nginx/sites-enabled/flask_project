@@ -13,7 +13,7 @@ server {
     location /static {
         alias /app/static;
     }
-
+	ssl on;
     ssl_certificate /fullchain.pem;
     ssl_certificate_key /privkey.pem;
 	#ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
