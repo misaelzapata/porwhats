@@ -1,13 +1,25 @@
 server {
-
     listen 80;
-    server_name example.org;
+    server_name porwhats.com www.porwhats.com;
+    return 301 https://$host$request_uri;
+}
+
+server {
+
+    listen 443;
+    server_name porwhats.com www.porwhats.com;
     charset utf-8;
 
     location /static {
         alias /app/static;
     }
 
+    ssl_certificate /etc/letsencrypt/live/porwhats.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/porwhats.com/privkey.pem;
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+	ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH';	
+	
     location / {
         proxy_pass http://web:5000;
         proxy_set_header Host $host;
@@ -15,10 +27,4 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 	
-    listen 443 ssl;
-
-    server_name porwhats.com www.porwhats.com;
-
-    ssl_certificate /etc/letsencrypt/live/porwhats.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/porwhats.com/privkey.pem;
 }
