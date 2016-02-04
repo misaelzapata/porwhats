@@ -30,7 +30,7 @@ nginx:
   build: ./nginx/
   ports:
     - "80:80"
-    - "443:443"	
+    - "443:443"
   volumes:
     - /home/dkr/porwhats/web/static/:/www/static
     - /home/dkr/porwhats/uploads/:/app/static/uploads
