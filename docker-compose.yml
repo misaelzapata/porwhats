@@ -33,6 +33,8 @@ nginx:
   volumes:
     - /home/dkr/porwhats/web/static/:/www/static
     - /home/dkr/porwhats/uploads/:/app/static/uploads
+    - /etc/letsencrypt/live/porwhats.com/fullchain.pem:/etc/letsencrypt/live/porwhats.com/fullchain.pem
+    - /etc/letsencrypt/live/porwhats.com/privkey.pem:/etc/letsencrypt/live/porwhats.com/privkey.pem
   volumes_from:
     - web
   links:
