@@ -33,7 +33,7 @@ nginx:
     - "443:443"
   volumes:
     - /home/dkr/porwhats/web/static/:/www/static
-    - /home/dkr/porwhats/uploads/:/app/static/uploads
+    - /home/dkr/uploads/:/app/static/uploads
     - /home/dkr/porwhats/logs:/logs
     - /etc/letsencrypt/live/porwhats.com/fullchain.pem:/fullchain.pem
     - /etc/letsencrypt/live/porwhats.com/privkey.pem:/privkey.pem

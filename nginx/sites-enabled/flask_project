@@ -28,6 +28,7 @@ server {
                  giant.porwhats.com
                  thumbs.porwhats.com
                  fat.porwhats.com
+				 zippy.porwhats.com
                  assets.porwhats.com;
 				 
     charset utf-8;
