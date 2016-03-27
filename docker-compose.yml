@@ -13,7 +13,7 @@ web:
     - mongo
   volumes:
     - /home/dkr/porwhats/web:/app/
-    - /home/dkr/porwhats/logs:/app/logs
+    - /home/dkr/porwhats/logs:/logs
     - /home/dkr/porwhats/web/static/:/app/static
     - /home/dkr/porwhats/uploads/:/app/static/uploads
     - /home/dkr/porwhats/web/requirements.txt:/app/web/requirements.txt
