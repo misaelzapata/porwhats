@@ -6,8 +6,8 @@ mongo:
 redis:
   image: redis:3.0.5
   ports:
-    - "0.0.0.0:6379:6379"  
-	
+    - "0.0.0.0:6379:6379"
+
 python_whats:
   restart: always
   build: ./python_whats/
