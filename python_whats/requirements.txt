@@ -1,4 +1,3 @@
-Pillow==2.9.0
 protobuf==3.0.0b2.post2
 pycrypto==2.6.1
 python-axolotl==0.1.34
@@ -8,11 +7,5 @@ six==1.10.0
 -e git+https://github.com/jlguardi/yowsup.git@f3871453700c3f3ea1861761362021eb6f55f87e#egg=yowsup2
 psutil
 hurry.filesize
-tornado
 pymongo
-moviepy
 redis
-flask
-twitter-text-python
-python-slugify
-requests
