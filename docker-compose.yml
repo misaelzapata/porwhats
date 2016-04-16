@@ -17,7 +17,7 @@ python_whats:
     - /home/dkr/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
   #env_file: .env
   working_dir: /python_whats
-  entrypoint: ./python_whats/docker-entrypoint.sh
+  entrypoint: /python_whats/docker-entrypoint.sh
 
 python_downloader:
   restart: always
@@ -38,7 +38,7 @@ python_downloader:
     - /home/dkr/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
   #env_file: .env
   working_dir: /python_downloader
-  entrypoint: ./python_downloader/docker-entrypoint.sh
+  entrypoint: /python_downloader/docker-entrypoint.sh
   
 web:
   restart: always
