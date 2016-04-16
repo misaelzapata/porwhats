@@ -1,7 +1,6 @@
 #https://gist.github.com/jobliz/2596594
 #http://blog.jupo.org/2013/02/23/a-tale-of-two-queues/
 import os
-import requests
 import urlparse
 import pymongo
 import redis
