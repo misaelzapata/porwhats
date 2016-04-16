@@ -512,7 +512,7 @@ class WhatsAppLayer(YowInterfaceLayer):
     @ProtocolEntityCallback("message")
     def onMessage(self, message):
         import redis
-        r = redis.StrictRedis(host='192.168.99.100',port=6379)
+        r = redis.StrictRedis(host='redis',port=6379)
         p = r.pubsub()
         
         messageOut = ""
