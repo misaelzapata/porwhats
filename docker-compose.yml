@@ -13,7 +13,7 @@ python_whats:
     - /home/dkr/porwhats/python_whats/docker-entrypoint.sh:/python_whats/docker-entrypoint.sh
     #- /home/dkr/porwhats/configurations/app/app.ini:/etc/supervisor/app.ini
     #- /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini
-    - /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/whatsapp.ini	
+    - /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/whatsapp.ini
     - /home/dkr/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
   #env_file: .env
   working_dir: /python_whats
