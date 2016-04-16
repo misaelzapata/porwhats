@@ -1,3 +1,13 @@
+mongo:
+  image: mongo:latest
+  volumes:  
+    - /home/dkr/data/db:/data/db
+
+redis:
+  image: redis:3.0.5
+  ports:
+    - "0.0.0.0:6379:6379"  
+	
 python_whats:
   restart: always
   build: ./python_whats/
@@ -81,13 +91,3 @@ nginx:
     - web
   links:
     - web:web
-
-mongo:
-  image: mongo:latest
-  volumes:  
-    - /home/dkr/data/db:/data/db
-
-redis:
-  image: redis:3.0.5
-  ports:
-    - "0.0.0.0:6379:6379"  
