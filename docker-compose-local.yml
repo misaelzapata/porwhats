@@ -1,0 +1,93 @@
+python_whats:
+  restart: always
+  build: ./python_whats/
+  links:
+    - redis
+    - mongo
+  volumes:
+    - /Users/misael/Desktop/porwhats/web:/app/
+    - /Users/misael/Desktop/porwhats/logs:/logs
+    - /Users/misael/Desktop/porwhats/web/static/:/app/static
+    - /Users/misael/Desktop/porwhats/uploads/:/app/static/uploads
+    - /Users/misael/Desktop/porwhats/python_whats/requirements.txt:/python_whats/requirements.txt
+    - /Users/misael/Desktop/porwhats/python_whats/docker-entrypoint.sh:/python_whats/docker-entrypoint.sh
+    #- /Users/misael/Desktop/porwhats/configurations/app/app.ini:/etc/supervisor/app.ini
+    #- /Users/misael/Desktop/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini
+    - /Users/misael/Desktop/porwhats/configurations/app/downloader.ini:/etc/supervisor/whatsapp.ini
+    - /Users/misael/Desktop/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
+  #env_file: .env
+  working_dir: /python_whats
+  entrypoint: /python_whats/docker-entrypoint.sh
+
+python_downloader:
+  restart: always
+  build: ./python_downloader/
+  links:
+    - redis
+    - mongo
+  volumes:
+    - /Users/misael/Desktop/porwhats/web:/app/
+    - /Users/misael/Desktop/porwhats/logs:/logs
+    - /Users/misael/Desktop/porwhats/web/static/:/app/static
+    - /Users/misael/Desktop/porwhats/uploads/:/app/static/uploads
+    - /Users/misael/Desktop/porwhats/python_downloader/requirements.txt:/python_whats/requirements.txt
+    - /Users/misael/Desktop/porwhats/python_downloader/docker-entrypoint.sh:/python_downloader/docker-entrypoint.sh
+    #- /Users/misael/Desktop/porwhats/configurations/app/app.ini:/etc/supervisor/app.ini
+    - /Users/misael/Desktop/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini
+    #- /Users/misael/Desktop/porwhats/configurations/app/downloader.ini:/etc/supervisor/whatsapp.ini	
+    - /Users/misael/Desktop/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
+  #env_file: .env
+  working_dir: /python_downloader
+  entrypoint: /python_downloader/docker-entrypoint.sh
+  
+web:
+  restart: always
+  build: ./web
+  expose:
+    - "5000"
+  ports:
+    - "5000:5000"
+  links:
+    - redis
+    - mongo
+  volumes:
+    - /Users/misael/Desktop/porwhats/web:/app/
+    - /Users/misael/Desktop/porwhats/logs:/logs
+    - /Users/misael/Desktop/porwhats/web/static/:/app/static
+    - /Users/misael/Desktop/porwhats/uploads/:/app/static/uploads
+    - /Users/misael/Desktop/porwhats/web/requirements.txt:/app/web/requirements.txt
+    - /Users/misael/Desktop/porwhats/web/docker-entrypoint.sh:/app/web/docker-entrypoint.sh
+    - /Users/misael/Desktop/porwhats/configurations/app/app.ini:/etc/supervisor/app.ini
+    #- /Users/misael/Desktop/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini
+    #- /Users/misael/Desktop/porwhats/configurations/app/downloader.ini:/etc/supervisor/whatsapp.ini	
+    - /Users/misael/Desktop/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
+  #env_file: .env
+  working_dir: /app
+  entrypoint: /app/docker-entrypoint.sh
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+    #- "443:443"
+  volumes:
+    - /Users/misael/Desktop/porwhats/web/static/:/www/static
+    - /Users/misael/Desktop/porwhats/uploads/:/app/static/uploads
+    - /Users/misael/Desktop/porwhats/logs:/logs
+    #- /etc/letsencrypt/live/porwhats.com/fullchain.pem:/fullchain.pem
+    #- /etc/letsencrypt/live/porwhats.com/privkey.pem:/privkey.pem
+  volumes_from:
+    - web
+  links:
+    - web:web
+
+mongo:
+  image: mongo:latest
+  volumes:  
+    - /home/dkr/data/db:/data/db
+
+redis:
+  image: redis:3.0.5
+  ports:
+    - "0.0.0.0:6379:6379"  

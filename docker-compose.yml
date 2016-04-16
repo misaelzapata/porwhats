@@ -1,5 +1,44 @@
 python_whats:
+  restart: always
   build: ./python_whats/
+  links:
+    - redis
+    - mongo
+  volumes:
+    - /home/dkr/porwhats/web:/app/
+    - /home/dkr/porwhats/logs:/logs
+    - /home/dkr/porwhats/web/static/:/app/static
+    - /home/dkr/porwhats/uploads/:/app/static/uploads
+    - /home/dkr/porwhats/python_whats/requirements.txt:/python_whats/requirements.txt
+    - /home/dkr/porwhats/python_whats/docker-entrypoint.sh:/python_whats/docker-entrypoint.sh
+    #- /home/dkr/porwhats/configurations/app/app.ini:/etc/supervisor/app.ini
+    #- /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini
+    - /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/whatsapp.ini	
+    - /home/dkr/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
+  #env_file: .env
+  working_dir: /python_whats
+  entrypoint: ./docker-entrypoint.sh
+
+python_downloader:
+  restart: always
+  build: ./python_downloader/
+  links:
+    - redis
+    - mongo
+  volumes:
+    - /home/dkr/porwhats/web:/app/
+    - /home/dkr/porwhats/logs:/logs
+    - /home/dkr/porwhats/web/static/:/app/static
+    - /home/dkr/porwhats/uploads/:/app/static/uploads
+    - /home/dkr/porwhats/python_whats/requirements.txt:/python_whats/requirements.txt
+    - /home/dkr/porwhats/python_whats/docker-entrypoint.sh:/python_whats/docker-entrypoint.sh
+    #- /home/dkr/porwhats/configurations/app/app.ini:/etc/supervisor/app.ini
+    - /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini
+    #- /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/whatsapp.ini	
+    - /home/dkr/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
+  #env_file: .env
+  working_dir: /python_downloader
+  entrypoint: ./docker-entrypoint.sh
   
 web:
   restart: always
@@ -19,9 +58,10 @@ web:
     - /home/dkr/porwhats/web/requirements.txt:/app/web/requirements.txt
     - /home/dkr/porwhats/web/docker-entrypoint.sh:/app/web/docker-entrypoint.sh
     - /home/dkr/porwhats/configurations/app/app.ini:/etc/supervisor/app.ini
-    - /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini
+    #- /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/downloader.ini
+    #- /home/dkr/porwhats/configurations/app/downloader.ini:/etc/supervisor/whatsapp.ini	
     - /home/dkr/porwhats/configurations/supervisor/supervisord.conf:/etc/supervisord.conf
-  env_file: .env
+  #env_file: .env
   working_dir: /app
   entrypoint: ./docker-entrypoint.sh
 
