@@ -20,7 +20,7 @@ python_whats:
     - /home/dkr/porwhats/web/static/:/app/static
     - /home/dkr/porwhats/uploads/:/app/static/uploads
     - /home/dkr/porwhats/python_whats/requirements.txt:/app/python_whats/requirements.txt
-    - /home/dkr/porwhats/python_whats/:/python_whats
+    - /home/dkr/porwhats/python_whats/:/app/python_whats
     - /home/dkr/porwhats/python_whats/_yowsup:/root/.yowsup
     - /home/dkr/porwhats/python_whats/docker-entrypoint.sh:/app/python_whats/docker-entrypoint.sh
     #- /home/dkr/porwhats/configurations/app/app.ini:/etc/supervisor/app.ini
@@ -42,7 +42,7 @@ python_downloader:
     - /home/dkr/porwhats/logs:/logs
     - /home/dkr/porwhats/web/static/:/app/static
     - /home/dkr/porwhats/uploads/:/app/static/uploads
-    - /home/dkr/porwhats/python_downloader:/app
+    - /home/dkr/porwhats/python_downloader:/app/python_downloader
     - /home/dkr/porwhats/python_downloader/requirements.txt:/app/python_downloader/requirements.txt
     - /home/dkr/porwhats/python_downloader/docker-entrypoint.sh:/app/python_downloader/docker-entrypoint.sh
     #- /home/dkr/porwhats/configurations/app/app.ini:/etc/supervisor/app.ini
