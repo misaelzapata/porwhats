@@ -27,7 +27,7 @@ def download_file(url,path):
     return path
     
 static = os.path.join(os.path.dirname(__file__), "static")
-client = redis.Redis(host='192.168.99.100',port=6379)
+client = redis.Redis(host='redis',port=6379)
 pubsub = client.pubsub()
 pubsub.subscribe('new_message')    
 
