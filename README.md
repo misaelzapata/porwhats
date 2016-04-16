@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## Dockerizing Flask With Compose and Machine - From Localhost to the Cloud
 
 Featuring:
@@ -9,3 +10,6 @@ Featuring:
 **Check out the awesome blog post here > https://realpython.com/blog/python/dockerizing-flask-with-compose-and-machine-from-localhost-to-the-cloud/**
 
 Cheers!
+=======
+# porwhats
+>>>>>>> origin/master
