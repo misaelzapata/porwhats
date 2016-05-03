@@ -100,7 +100,7 @@ class WhatsAppLayer(YowInterfaceLayer):
         self.output("Disconnected: %s" % layerEvent.getArg("reason"))
         if self.disconnectAction == self.__class__.DISCONNECT_ACTION_PROMPT:
            self.connected = False
-           self.notifyInputThread()
+           #self.notifyInputThread()
         else:
            os._exit(os.EX_OK)        
 

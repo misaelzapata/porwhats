@@ -15,10 +15,7 @@ python_whats:
     - redis
     - mongo
   volumes:
-    - /home/dkr/porwhats/web:/app/
     - /home/dkr/porwhats/logs:/logs
-    - /home/dkr/porwhats/web/static/:/app/static
-    - /home/dkr/porwhats/uploads/:/app/static/uploads
     - /home/dkr/porwhats/python_whats/requirements.txt:/app/python_whats/requirements.txt
     - /home/dkr/porwhats/python_whats/:/app/python_whats
     - /home/dkr/porwhats/python_whats/_yowsup:/root/.yowsup
