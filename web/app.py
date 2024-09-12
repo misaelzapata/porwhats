@@ -21,7 +21,7 @@ def index():
         post = Post(text)
         db.session.add(post)
         db.session.commit()
-    return 'fuck yeah'
+    return '1'
     #posts = Post.query.order_by(Post.date_posted.desc()).all()
     #return render_template('index.html', posts=posts)
 
